@@ -7,6 +7,8 @@ import ErrorPage from './pages/ErrorPage.jsx'
 import Products from './pages/Products.jsx'
 import Header from './layout/Header.jsx'
 import ProductDetails from './pages/ProductDetails.jsx'
+import { CartProvider } from './context/CartContext.jsx'
+import Cart from './pages/Cart.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,10 @@ const router = createBrowserRouter([
         Component : Products
       },
       {
+        path : "cart",
+        Component : Cart
+      },
+      {
         path : "products/:id",
         Component : ProductDetails
       },
@@ -28,6 +34,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   </StrictMode>,
 )

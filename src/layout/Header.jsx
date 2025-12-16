@@ -1,6 +1,9 @@
 import { Link, Outlet } from "react-router-dom"
+import { useCart } from "../context/CartContext";
 
 const Header = () => {
+
+  const {cart} = useCart();
 
   return (
     <>
@@ -9,6 +12,7 @@ const Header = () => {
             <Link to="/"> My App </Link>
         </div>
         <nav>
+            <Link to="/cart">Cart ({cart.length})</Link>
             <ul className="flex gap-7 justify-center">
               {/* <li> <Link to="/"> Home </Link> </li> */}
             </ul>

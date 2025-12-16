@@ -1,11 +1,9 @@
-import Product from './pages/Products'
+import Products from './pages/Products';
 
 function App() {
 
   return (
-    <>
-      <Product />
-    </>
+    <Products />
   )
 }
 

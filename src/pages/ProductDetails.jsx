@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom"
+import { useCart } from "../context/CartContext";
 
 const ProductDetails = () => {
 
@@ -10,6 +11,7 @@ const ProductDetails = () => {
     const [error, setError] = useState(null);
 
     const {id} = useParams();
+    const {dispatch} = useCart();
 
     useEffect(()=> {
       let mounted = true;
@@ -47,6 +49,7 @@ const ProductDetails = () => {
             <p className="text-red-500 font-medium"> Price : {product?.price} $ </p>
             <p> Description : {product?.description} </p>
             <Link to="/" className="rounded inline-block mt-3 px-4 py-1 bg-green-500 font-medium text-white text-sm"> &#8592; Go Back </Link>
+            <button onClick={() => dispatch({ type: "ADD_TO_CART", payload: product })} className="mt-3 px-4 py-1 bg-indigo-500 text-white rounded"> Add to Cart </button>
         </article>}
 
     </div>
